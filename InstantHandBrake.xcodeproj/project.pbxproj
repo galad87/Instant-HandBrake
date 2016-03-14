@@ -1,0 +1,631 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A91F83C91C88575500B2E8CC /* HandBrakeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91F83C81C88575500B2E8CC /* HandBrakeKit.framework */; };
+		A91F83CA1C885B1A00B2E8CC /* HandBrakeKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A91F83C81C88575500B2E8CC /* HandBrakeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A92D91851C7F44B50096C7EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D91841C7F44B50096C7EA /* AppDelegate.swift */; };
+		A92D91871C7F44B50096C7EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A92D91861C7F44B50096C7EA /* Assets.xcassets */; };
+		A92D918A1C7F44B50096C7EA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A92D91881C7F44B50096C7EA /* MainMenu.xib */; };
+		A92D91951C7F44B50096C7EA /* InstantHandBrakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D91941C7F44B50096C7EA /* InstantHandBrakeTests.swift */; };
+		A92D91A01C7F44B50096C7EA /* InstantHandBrakeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92D919F1C7F44B50096C7EA /* InstantHandBrakeUITests.swift */; };
+		A959612E1C943D0800DA839A /* OutputRedirect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959612D1C943D0800DA839A /* OutputRedirect.swift */; };
+		A967939D1C889B3600A23281 /* ScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967939B1C889B3600A23281 /* ScanController.swift */; };
+		A96793A11C889B4F00A23281 /* EncodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A967939F1C889B4F00A23281 /* EncodeController.swift */; };
+		A96793A51C889D1D00A23281 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96793A31C889D1D00A23281 /* SettingsController.swift */; };
+		A9A65F211C9214DC00DF0159 /* ActivityLogWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A65F1F1C9214DC00DF0159 /* ActivityLogWindowController.swift */; };
+		A9AF9E9C1C94173B003D0D2E /* Toolbared.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AF9E9B1C94173B003D0D2E /* Toolbared.swift */; };
+		A9C850441C886511006512DE /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C850421C886511006512DE /* DocumentController.swift */; };
+		A9CF057B1C88A78F001E2276 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CF05791C88A78F001E2276 /* DocumentViewController.swift */; };
+		A9CF057C1C88A78F001E2276 /* DocumentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9CF057A1C88A78F001E2276 /* DocumentViewController.xib */; };
+		A9E2BEA61C89A8010041833A /* KDCircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E2BEA51C89A8010041833A /* KDCircularProgress.swift */; };
+		A9E3F38C1C945A6D00F7AF0A /* EncodeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E3F38E1C945A6D00F7AF0A /* EncodeController.xib */; };
+		A9E3F38F1C945A7800F7AF0A /* SettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E3F3911C945A7800F7AF0A /* SettingsController.xib */; };
+		A9E3F3921C945A7C00F7AF0A /* ScanController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E3F3941C945A7C00F7AF0A /* ScanController.xib */; };
+		A9E3F3951C945A8800F7AF0A /* DocumentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E3F3971C945A8800F7AF0A /* DocumentController.xib */; };
+		A9E3F3981C945A8C00F7AF0A /* ActivityLogWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9E3F39A1C945A8C00F7AF0A /* ActivityLogWindowController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A92D91911C7F44B50096C7EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A92D91791C7F44B50096C7EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A92D91801C7F44B50096C7EA;
+			remoteInfo = InstantHandBrake;
+		};
+		A92D919C1C7F44B50096C7EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A92D91791C7F44B50096C7EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A92D91801C7F44B50096C7EA;
+			remoteInfo = InstantHandBrake;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A92D91B01C7F457E0096C7EA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A91F83CA1C885B1A00B2E8CC /* HandBrakeKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A91F83C81C88575500B2E8CC /* HandBrakeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HandBrakeKit.framework; sourceTree = SOURCE_ROOT; };
+		A92D91811C7F44B50096C7EA /* Instant HandBrake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instant HandBrake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A92D91841C7F44B50096C7EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A92D91861C7F44B50096C7EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A92D91891C7F44B50096C7EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A92D918B1C7F44B50096C7EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A92D91901C7F44B50096C7EA /* InstantHandBrakeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstantHandBrakeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A92D91941C7F44B50096C7EA /* InstantHandBrakeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantHandBrakeTests.swift; sourceTree = "<group>"; };
+		A92D91961C7F44B50096C7EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A92D919B1C7F44B50096C7EA /* InstantHandBrakeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstantHandBrakeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A92D919F1C7F44B50096C7EA /* InstantHandBrakeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantHandBrakeUITests.swift; sourceTree = "<group>"; };
+		A92D91A11C7F44B50096C7EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A959612D1C943D0800DA839A /* OutputRedirect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputRedirect.swift; sourceTree = "<group>"; };
+		A967939B1C889B3600A23281 /* ScanController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanController.swift; sourceTree = "<group>"; };
+		A967939F1C889B4F00A23281 /* EncodeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EncodeController.swift; sourceTree = "<group>"; };
+		A96793A31C889D1D00A23281 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		A9A65F1F1C9214DC00DF0159 /* ActivityLogWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLogWindowController.swift; sourceTree = "<group>"; };
+		A9AF9E9B1C94173B003D0D2E /* Toolbared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toolbared.swift; sourceTree = "<group>"; };
+		A9C850421C886511006512DE /* DocumentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentController.swift; sourceTree = "<group>"; };
+		A9CF05791C88A78F001E2276 /* DocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
+		A9CF057A1C88A78F001E2276 /* DocumentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DocumentViewController.xib; sourceTree = "<group>"; };
+		A9E2BEA51C89A8010041833A /* KDCircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KDCircularProgress.swift; sourceTree = "<group>"; };
+		A9E3F38D1C945A6D00F7AF0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EncodeController.xib; sourceTree = "<group>"; };
+		A9E3F3901C945A7800F7AF0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SettingsController.xib; sourceTree = "<group>"; };
+		A9E3F3931C945A7C00F7AF0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ScanController.xib; sourceTree = "<group>"; };
+		A9E3F3961C945A8800F7AF0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DocumentController.xib; sourceTree = "<group>"; };
+		A9E3F3991C945A8C00F7AF0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ActivityLogWindowController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A92D917E1C7F44B50096C7EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A91F83C91C88575500B2E8CC /* HandBrakeKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A92D918D1C7F44B50096C7EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A92D91981C7F44B50096C7EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A92D91781C7F44B50096C7EA = {
+			isa = PBXGroup;
+			children = (
+				A92D91831C7F44B50096C7EA /* InstantHandBrake */,
+				A92D91931C7F44B50096C7EA /* InstantHandBrakeTests */,
+				A92D919E1C7F44B50096C7EA /* InstantHandBrakeUITests */,
+				A92D91821C7F44B50096C7EA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A92D91821C7F44B50096C7EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A92D91811C7F44B50096C7EA /* Instant HandBrake.app */,
+				A92D91901C7F44B50096C7EA /* InstantHandBrakeTests.xctest */,
+				A92D919B1C7F44B50096C7EA /* InstantHandBrakeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A92D91831C7F44B50096C7EA /* InstantHandBrake */ = {
+			isa = PBXGroup;
+			children = (
+				A92D91841C7F44B50096C7EA /* AppDelegate.swift */,
+				A92D91881C7F44B50096C7EA /* MainMenu.xib */,
+				A9A65F1F1C9214DC00DF0159 /* ActivityLogWindowController.swift */,
+				A9E3F39A1C945A8C00F7AF0A /* ActivityLogWindowController.xib */,
+				A9AF9E9B1C94173B003D0D2E /* Toolbared.swift */,
+				A9C850421C886511006512DE /* DocumentController.swift */,
+				A9E3F3971C945A8800F7AF0A /* DocumentController.xib */,
+				A9CF05791C88A78F001E2276 /* DocumentViewController.swift */,
+				A9CF057A1C88A78F001E2276 /* DocumentViewController.xib */,
+				A967939B1C889B3600A23281 /* ScanController.swift */,
+				A9E3F3941C945A7C00F7AF0A /* ScanController.xib */,
+				A96793A31C889D1D00A23281 /* SettingsController.swift */,
+				A9E3F3911C945A7800F7AF0A /* SettingsController.xib */,
+				A967939F1C889B4F00A23281 /* EncodeController.swift */,
+				A9E3F38E1C945A6D00F7AF0A /* EncodeController.xib */,
+				A959612D1C943D0800DA839A /* OutputRedirect.swift */,
+				A9E2BEA51C89A8010041833A /* KDCircularProgress.swift */,
+				A92D91861C7F44B50096C7EA /* Assets.xcassets */,
+				A92D918B1C7F44B50096C7EA /* Info.plist */,
+				A91F83C81C88575500B2E8CC /* HandBrakeKit.framework */,
+			);
+			path = InstantHandBrake;
+			sourceTree = "<group>";
+		};
+		A92D91931C7F44B50096C7EA /* InstantHandBrakeTests */ = {
+			isa = PBXGroup;
+			children = (
+				A92D91941C7F44B50096C7EA /* InstantHandBrakeTests.swift */,
+				A92D91961C7F44B50096C7EA /* Info.plist */,
+			);
+			path = InstantHandBrakeTests;
+			sourceTree = "<group>";
+		};
+		A92D919E1C7F44B50096C7EA /* InstantHandBrakeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A92D919F1C7F44B50096C7EA /* InstantHandBrakeUITests.swift */,
+				A92D91A11C7F44B50096C7EA /* Info.plist */,
+			);
+			path = InstantHandBrakeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A92D91801C7F44B50096C7EA /* Instant HandBrake */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A92D91A41C7F44B50096C7EA /* Build configuration list for PBXNativeTarget "Instant HandBrake" */;
+			buildPhases = (
+				A92D917D1C7F44B50096C7EA /* Sources */,
+				A92D917E1C7F44B50096C7EA /* Frameworks */,
+				A92D917F1C7F44B50096C7EA /* Resources */,
+				A92D91B01C7F457E0096C7EA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Instant HandBrake";
+			productName = InstantHandBrake;
+			productReference = A92D91811C7F44B50096C7EA /* Instant HandBrake.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A92D918F1C7F44B50096C7EA /* InstantHandBrakeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A92D91A71C7F44B50096C7EA /* Build configuration list for PBXNativeTarget "InstantHandBrakeTests" */;
+			buildPhases = (
+				A92D918C1C7F44B50096C7EA /* Sources */,
+				A92D918D1C7F44B50096C7EA /* Frameworks */,
+				A92D918E1C7F44B50096C7EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A92D91921C7F44B50096C7EA /* PBXTargetDependency */,
+			);
+			name = InstantHandBrakeTests;
+			productName = InstantHandBrakeTests;
+			productReference = A92D91901C7F44B50096C7EA /* InstantHandBrakeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A92D919A1C7F44B50096C7EA /* InstantHandBrakeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A92D91AA1C7F44B50096C7EA /* Build configuration list for PBXNativeTarget "InstantHandBrakeUITests" */;
+			buildPhases = (
+				A92D91971C7F44B50096C7EA /* Sources */,
+				A92D91981C7F44B50096C7EA /* Frameworks */,
+				A92D91991C7F44B50096C7EA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A92D919D1C7F44B50096C7EA /* PBXTargetDependency */,
+			);
+			name = InstantHandBrakeUITests;
+			productName = InstantHandBrakeUITests;
+			productReference = A92D919B1C7F44B50096C7EA /* InstantHandBrakeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A92D91791C7F44B50096C7EA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = HandBrake;
+				TargetAttributes = {
+					A92D91801C7F44B50096C7EA = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					A92D918F1C7F44B50096C7EA = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = A92D91801C7F44B50096C7EA;
+					};
+					A92D919A1C7F44B50096C7EA = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = A92D91801C7F44B50096C7EA;
+					};
+				};
+			};
+			buildConfigurationList = A92D917C1C7F44B50096C7EA /* Build configuration list for PBXProject "InstantHandBrake" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A92D91781C7F44B50096C7EA;
+			productRefGroup = A92D91821C7F44B50096C7EA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A92D91801C7F44B50096C7EA /* Instant HandBrake */,
+				A92D918F1C7F44B50096C7EA /* InstantHandBrakeTests */,
+				A92D919A1C7F44B50096C7EA /* InstantHandBrakeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A92D917F1C7F44B50096C7EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9E3F3921C945A7C00F7AF0A /* ScanController.xib in Resources */,
+				A9E3F3951C945A8800F7AF0A /* DocumentController.xib in Resources */,
+				A9E3F38C1C945A6D00F7AF0A /* EncodeController.xib in Resources */,
+				A9E3F3981C945A8C00F7AF0A /* ActivityLogWindowController.xib in Resources */,
+				A9CF057C1C88A78F001E2276 /* DocumentViewController.xib in Resources */,
+				A92D91871C7F44B50096C7EA /* Assets.xcassets in Resources */,
+				A9E3F38F1C945A7800F7AF0A /* SettingsController.xib in Resources */,
+				A92D918A1C7F44B50096C7EA /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A92D918E1C7F44B50096C7EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A92D91991C7F44B50096C7EA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A92D917D1C7F44B50096C7EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9C850441C886511006512DE /* DocumentController.swift in Sources */,
+				A96793A51C889D1D00A23281 /* SettingsController.swift in Sources */,
+				A967939D1C889B3600A23281 /* ScanController.swift in Sources */,
+				A9CF057B1C88A78F001E2276 /* DocumentViewController.swift in Sources */,
+				A92D91851C7F44B50096C7EA /* AppDelegate.swift in Sources */,
+				A9A65F211C9214DC00DF0159 /* ActivityLogWindowController.swift in Sources */,
+				A959612E1C943D0800DA839A /* OutputRedirect.swift in Sources */,
+				A9AF9E9C1C94173B003D0D2E /* Toolbared.swift in Sources */,
+				A96793A11C889B4F00A23281 /* EncodeController.swift in Sources */,
+				A9E2BEA61C89A8010041833A /* KDCircularProgress.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A92D918C1C7F44B50096C7EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A92D91951C7F44B50096C7EA /* InstantHandBrakeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A92D91971C7F44B50096C7EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A92D91A01C7F44B50096C7EA /* InstantHandBrakeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A92D91921C7F44B50096C7EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A92D91801C7F44B50096C7EA /* Instant HandBrake */;
+			targetProxy = A92D91911C7F44B50096C7EA /* PBXContainerItemProxy */;
+		};
+		A92D919D1C7F44B50096C7EA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A92D91801C7F44B50096C7EA /* Instant HandBrake */;
+			targetProxy = A92D919C1C7F44B50096C7EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A92D91881C7F44B50096C7EA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A92D91891C7F44B50096C7EA /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		A9E3F38E1C945A6D00F7AF0A /* EncodeController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9E3F38D1C945A6D00F7AF0A /* Base */,
+			);
+			name = EncodeController.xib;
+			sourceTree = "<group>";
+		};
+		A9E3F3911C945A7800F7AF0A /* SettingsController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9E3F3901C945A7800F7AF0A /* Base */,
+			);
+			name = SettingsController.xib;
+			sourceTree = "<group>";
+		};
+		A9E3F3941C945A7C00F7AF0A /* ScanController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9E3F3931C945A7C00F7AF0A /* Base */,
+			);
+			name = ScanController.xib;
+			sourceTree = "<group>";
+		};
+		A9E3F3971C945A8800F7AF0A /* DocumentController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9E3F3961C945A8800F7AF0A /* Base */,
+			);
+			name = DocumentController.xib;
+			sourceTree = "<group>";
+		};
+		A9E3F39A1C945A8C00F7AF0A /* ActivityLogWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9E3F3991C945A8C00F7AF0A /* Base */,
+			);
+			name = ActivityLogWindowController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A92D91A21C7F44B50096C7EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A92D91A31C7F44B50096C7EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A92D91A51C7F44B50096C7EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = InstantHandBrake/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.handbrake.InstantHandBrake;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A92D91A61C7F44B50096C7EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = InstantHandBrake/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.handbrake.InstantHandBrake;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+			};
+			name = Release;
+		};
+		A92D91A81C7F44B50096C7EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = InstantHandBrakeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.handbrake.InstantHandBrakeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InstantHandBrake.app/Contents/MacOS/InstantHandBrake";
+			};
+			name = Debug;
+		};
+		A92D91A91C7F44B50096C7EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = InstantHandBrakeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.handbrake.InstantHandBrakeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InstantHandBrake.app/Contents/MacOS/InstantHandBrake";
+			};
+			name = Release;
+		};
+		A92D91AB1C7F44B50096C7EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = InstantHandBrakeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.handbrake.InstantHandBrakeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = InstantHandBrake;
+			};
+			name = Debug;
+		};
+		A92D91AC1C7F44B50096C7EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = InstantHandBrakeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.handbrake.InstantHandBrakeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = InstantHandBrake;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A92D917C1C7F44B50096C7EA /* Build configuration list for PBXProject "InstantHandBrake" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A92D91A21C7F44B50096C7EA /* Debug */,
+				A92D91A31C7F44B50096C7EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A92D91A41C7F44B50096C7EA /* Build configuration list for PBXNativeTarget "Instant HandBrake" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A92D91A51C7F44B50096C7EA /* Debug */,
+				A92D91A61C7F44B50096C7EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A92D91A71C7F44B50096C7EA /* Build configuration list for PBXNativeTarget "InstantHandBrakeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A92D91A81C7F44B50096C7EA /* Debug */,
+				A92D91A91C7F44B50096C7EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A92D91AA1C7F44B50096C7EA /* Build configuration list for PBXNativeTarget "InstantHandBrakeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A92D91AB1C7F44B50096C7EA /* Debug */,
+				A92D91AC1C7F44B50096C7EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A92D91791C7F44B50096C7EA /* Project object */;
+}

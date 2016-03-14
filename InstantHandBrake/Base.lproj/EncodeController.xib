@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10115" systemVersion="15E61b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10115"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="EncodeController" customModule="Instant_HandBrake" customModuleProvider="target">
+            <connections>
+                <outlet property="circularIndicator" destination="fDr-zX-SWl" id="qla-WR-FmQ"/>
+                <outlet property="etaLabel" destination="UTN-Cp-WTy" id="O2i-GS-RPM"/>
+                <outlet property="jobNumberLabel" destination="Oqu-wS-6Np" id="ZeR-94-Ydn"/>
+                <outlet property="leftToolbarItem" destination="rfs-Gm-lDD" id="I46-76-Oxb"/>
+                <outlet property="pauseButton" destination="bNo-hU-0uR" id="PgP-8U-vJS"/>
+                <outlet property="percentLabel" destination="3DK-Oy-g4M" id="945-bP-oMY"/>
+                <outlet property="showInFinderButton" destination="yya-nR-bee" id="Uwi-xh-oeu"/>
+                <outlet property="stopButton" destination="Pty-D0-os8" id="UTJ-QX-Yvm"/>
+                <outlet property="view" destination="uN4-SQ-UZ6" id="xiv-tO-eHq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="uN4-SQ-UZ6">
+            <rect key="frame" x="0.0" y="0.0" width="420" height="320"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="fDr-zX-SWl" customClass="KDCircularProgress" customModule="Instant_HandBrake" customModuleProvider="target">
+                    <rect key="frame" x="70" y="20" width="280" height="280"/>
+                    <subviews>
+                        <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iae-W0-1ku">
+                            <rect key="frame" x="91" y="93" width="98" height="95"/>
+                            <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3DK-Oy-g4M">
+                                    <rect key="frame" x="34" y="76" width="31" height="19"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0%" id="AIk-Qn-U1L">
+                                        <font key="font" metaFont="system" size="16"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UTN-Cp-WTy">
+                                    <rect key="frame" x="17" y="51" width="65" height="17"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="00:00:00" id="goL-Wa-EZT">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Oqu-wS-6Np">
+                                    <rect key="frame" x="31" y="26" width="36" height="17"/>
+                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1 of 1" id="1Nw-ff-4zA">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yya-nR-bee">
+                                    <rect key="frame" x="0.0" y="-1" width="98" height="19"/>
+                                    <buttonCell key="cell" type="roundRect" title="Show in Finder" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fsI-uw-LEq">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="cellTitle"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="showInFinder:" target="-2" id="CR9-vX-Fz5"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Iae-W0-1ku" firstAttribute="centerX" secondItem="fDr-zX-SWl" secondAttribute="centerX" id="Zvd-al-E9T"/>
+                        <constraint firstItem="Iae-W0-1ku" firstAttribute="centerY" secondItem="fDr-zX-SWl" secondAttribute="centerY" id="o7t-Hj-pmb"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                            <integer key="value" value="90"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
+                            <color key="value" red="0.12099425053026726" green="0.56499216079910441" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
+                            <integer key="value" value="-90"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="clockwise" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="glowAmount">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="progressThickness">
+                            <real key="value" value="0.20000000000000001"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="trackThickness">
+                            <real key="value" value="0.29999999999999999"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="gradientRotateSpeed">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="trackColor">
+                            <color key="value" red="0.97629310344827591" green="0.97629310344827591" blue="0.97629310344827591" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="fDr-zX-SWl" firstAttribute="leading" secondItem="uN4-SQ-UZ6" secondAttribute="leading" constant="70" id="QKK-Rv-G7j"/>
+                <constraint firstItem="fDr-zX-SWl" firstAttribute="centerX" secondItem="uN4-SQ-UZ6" secondAttribute="centerX" id="RgP-5O-ubw"/>
+                <constraint firstAttribute="bottom" secondItem="fDr-zX-SWl" secondAttribute="bottom" constant="20" symbolic="YES" id="S7d-Mc-56e"/>
+                <constraint firstItem="fDr-zX-SWl" firstAttribute="top" secondItem="uN4-SQ-UZ6" secondAttribute="top" constant="20" symbolic="YES" id="vDz-XF-frm"/>
+            </constraints>
+            <point key="canvasLocation" x="481" y="355"/>
+        </customView>
+        <customView id="rfs-Gm-lDD" userLabel="Right View">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="32"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button toolTip="Stop encoding" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pty-D0-os8">
+                    <rect key="frame" x="86" y="3" width="32" height="25"/>
+                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="stopTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" id="z8V-X1-kTj">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handleCancel:" target="-2" id="rAO-3P-ro9"/>
+                    </connections>
+                </button>
+                <button toolTip="Pause/Resume encoding" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bNo-hU-0uR">
+                    <rect key="frame" x="46" y="3" width="32" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="2cu-i2-kCg"/>
+                    </constraints>
+                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="pauseBlackTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" id="t6n-Nj-Dg4">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handlePause:" target="-2" id="LIF-Dh-Nn5"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="bNo-hU-0uR" firstAttribute="top" secondItem="Pty-D0-os8" secondAttribute="top" id="0EG-Ob-mrM"/>
+                <constraint firstItem="bNo-hU-0uR" firstAttribute="centerY" secondItem="rfs-Gm-lDD" secondAttribute="centerY" id="A18-Fp-ctN"/>
+                <constraint firstItem="bNo-hU-0uR" firstAttribute="leading" secondItem="rfs-Gm-lDD" secondAttribute="leading" constant="46" id="KYJ-Hg-056"/>
+                <constraint firstAttribute="trailing" secondItem="Pty-D0-os8" secondAttribute="trailing" constant="2" id="aRV-pL-ktp"/>
+                <constraint firstItem="Pty-D0-os8" firstAttribute="leading" secondItem="bNo-hU-0uR" secondAttribute="trailing" constant="8" symbolic="YES" id="scM-A0-Jif"/>
+            </constraints>
+            <point key="canvasLocation" x="631" y="123"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="pauseBlackTemplate" width="39" height="38"/>
+        <image name="stopTemplate" width="19" height="18"/>
+    </resources>
+</document>
