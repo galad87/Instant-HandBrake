@@ -53,8 +53,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, DocumentDelegate {
         OutputRedirect.stderrRedirect.addListener { (string: String) in
             self.activityWindow.appendString(string)
         }
+    }
 
-        openDocument(self)
+    func applicationDidFinishLaunching(notification: NSNotification) {
+        if documentControllers.count == 0 {
+            openDocument(self)
+        }
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -80,10 +84,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, DocumentDelegate {
 
     @IBAction func openDocument(sender: AnyObject) {
         let panel = NSOpenPanel()
-
         panel.canChooseDirectories = true
 
-        panel.beginWithCompletionHandler { (result: Int) in
+        panel.beginWithCompletionHandler { (result) in
             if result == NSFileHandlingPanelOKButton {
                 if let url = panel.URL {
                     self.addDocumentController(url)

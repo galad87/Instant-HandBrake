@@ -128,11 +128,11 @@ class EncodeController: NSViewController, Toolbared {
 
             switch result {
             case .Done:
-                etaLabel.stringValue = "Completed"
+                etaLabel.stringValue = NSLocalizedString("Completed", comment: "Encode -> Completed")
             case .Cancelled:
-                etaLabel.stringValue = "Cancelled"
+                etaLabel.stringValue = NSLocalizedString("Cancelled", comment: "Encode -> Cancelled")
             case .Failed:
-                etaLabel.stringValue = "Failed"
+                etaLabel.stringValue = NSLocalizedString("Failed", comment: "Encode -> Failed")
             }
 
             pauseButton.enabled = false

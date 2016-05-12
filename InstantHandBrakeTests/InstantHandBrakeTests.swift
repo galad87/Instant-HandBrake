@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import InstantHandBrake
+@testable import Instant_HandBrake
 
 class InstantHandBrakeTests: XCTestCase {
     

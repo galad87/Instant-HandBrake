@@ -50,12 +50,19 @@ class ScanController: NSViewController, Toolbared {
     }
     
     private func handleProgress(state: HBState, progress: HBProgress, info: String) {
-        self.percentLabel.stringValue = String(format: "%.0f %%", arguments: [progress.percent * 100])
-        self.progressIndicator.angle = Int(progress.percent * 360)
+        percentLabel.stringValue = String(format: "%.0f %%", arguments: [progress.percent * 100])
+        progressIndicator.angle = Int(progress.percent * 360)
     }
 
     private func handleCompletion(result: HBCoreResult) {
-        delegate?.scanDone(self.core.titles)
+        let titles = core.titles
+        if titles.count > 0 {
+            delegate?.scanDone(titles)
+        }
+        else {
+            progressIndicator.angle = 360
+            percentLabel.stringValue = "No title found"
+        }
     }
 
 }
