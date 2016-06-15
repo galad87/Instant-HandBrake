@@ -10,7 +10,7 @@ import Cocoa
 import HandBrakeKit
 
 protocol SettingsControllerDelegate : class {
-    func encodeJobs(jobs: [HBJob])
+    func encode(jobs: [HBJob])
 }
 
 class SettingsController: NSViewController, Toolbared {
@@ -39,7 +39,7 @@ class SettingsController: NSViewController, Toolbared {
     }
 
     private dynamic var items = [TitleItem]()
-    private var destURL = NSURL(fileURLWithPath: "/")
+    private var destURL = URL(fileURLWithPath: "/")
 
     // MARK: - UI
 
@@ -81,10 +81,10 @@ class SettingsController: NSViewController, Toolbared {
 
     // MARK: - Destination popup
 
-    @IBAction func handleDestination(sender: AnyObject) {
+    @IBAction func handleDestination(_ sender: AnyObject) {
     }
 
-    @IBAction func chooseDestination(sender: AnyObject) {
+    @IBAction func chooseDestination(_ sender: AnyObject) {
         let panel = NSOpenPanel()
         panel.allowsMultipleSelection = false
         panel.canChooseFiles = false
@@ -92,35 +92,35 @@ class SettingsController: NSViewController, Toolbared {
         panel.canCreateDirectories = true
         panel.prompt = "Choose"
 
-        func modalCompletionHandler(modalResponse: NSModalResponse) {
-            if let URL = panel.URL where modalResponse == NSFileHandlingPanelOKButton {
+        func modalCompletionHandler(_ modalResponse: NSModalResponse) {
+            if let URL = panel.url where modalResponse == NSFileHandlingPanelOKButton {
                 let item = self.prepareDestinationPopUpItem(URL)
 
-                self.destinationPopUp.menu?.removeItemAtIndex(0)
-                self.destinationPopUp.menu?.insertItem(item, atIndex: 0)
+                self.destinationPopUp.menu?.removeItem(at: 0)
+                self.destinationPopUp.menu?.insertItem(item, at: 0)
 
                 self.destURL = URL
 
-                NSUserDefaults.standardUserDefaults().setURL(URL, forKey: "destination")
+                UserDefaults.standard().setURL(URL, forKey: "destination")
             }
 
-            self.destinationPopUp.selectItemAtIndex(0)
+            self.destinationPopUp.selectItem(at: 0)
         }
 
         if let sheetParent = view.window {
-            panel.beginSheetModalForWindow(sheetParent, completionHandler: modalCompletionHandler)
+            panel.beginSheetModal(for: sheetParent, completionHandler: modalCompletionHandler)
         }
         else {
-            panel.beginWithCompletionHandler(modalCompletionHandler)
+            panel.begin(completionHandler: modalCompletionHandler)
         }
     }
 
-    private func prepareDestinationPopUpItem(destURL: NSURL) -> NSMenuItem {
+    private func prepareDestinationPopUpItem(_ destURL: URL) -> NSMenuItem {
         let sel = #selector(self.handleDestination(_:))
         let item = NSMenuItem(title: destURL.lastPathComponent!, action: sel, keyEquivalent: "")
         item.target = self
 
-        let icon = NSWorkspace.sharedWorkspace().iconForFile(destURL.path!)
+        let icon = NSWorkspace.shared().icon(forFile: destURL.path!)
         icon.size = NSSize(width: 16, height: 16)
         item.image = icon
 
@@ -128,27 +128,27 @@ class SettingsController: NSViewController, Toolbared {
     }
 
     private func buildDestinationPopUp() {
-        if let savedURL = NSUserDefaults.standardUserDefaults().URLForKey("destination"),
-            let path = savedURL.path where NSFileManager.defaultManager().fileExistsAtPath(path) {
+        if let savedURL = UserDefaults.standard().url(forKey: "destination"),
+            let path = savedURL.path where FileManager.default().fileExists(atPath: path) {
             self.destURL = savedURL
         }
-        else if let movieFolderURL = NSSearchPathForDirectoriesInDomains(.MoviesDirectory, .UserDomainMask, true).first {
-            self.destURL = NSURL(fileURLWithPath:movieFolderURL)
+        else if let movieFolderURL = NSSearchPathForDirectoriesInDomains(.moviesDirectory, .userDomainMask, true).first {
+            self.destURL = URL(fileURLWithPath:movieFolderURL)
         }
 
         let folderItem = self.prepareDestinationPopUpItem(self.destURL)
 
-        self.destinationPopUp.menu?.removeItemAtIndex(0)
-        self.destinationPopUp.menu?.insertItem(folderItem, atIndex: 0)
+        self.destinationPopUp.menu?.removeItem(at: 0)
+        self.destinationPopUp.menu?.insertItem(folderItem, at: 0)
 
-        self.destinationPopUp.selectItemAtIndex(0)
+        self.destinationPopUp.selectItem(at: 0)
     }
 
     // MARK: - Presets popup
 
     private func buildPresetPopUp() {
-        self.presetsManager.root.enumerateObjectsUsingBlock({ (obj: AnyObject, idx: NSIndexPath, stop: UnsafeMutablePointer<ObjCBool>) in
-            if let preset = obj as? HBPreset where idx.length > 0 {
+        self.presetsManager.root.enumerateObjects({ (obj: AnyObject, idx: IndexPath, stop: UnsafeMutablePointer<ObjCBool>) in
+            if let preset = obj as? HBPreset where (idx as NSIndexPath).length > 0 {
 
                 let item = NSMenuItem()
                 item.title = preset.name
@@ -158,20 +158,20 @@ class SettingsController: NSViewController, Toolbared {
                     item.target = self
                 }
                 else {
-                    item.enabled = false
+                    item.isEnabled = false
                 }
-                item.indentationLevel = idx.length - 1
+                item.indentationLevel = (idx as NSIndexPath).length - 1
 
                 self.presetsPopUp.menu?.addItem(item)
 
                 if preset == self.preset {
-                    self.presetsPopUp.selectItem(item)
+                    self.presetsPopUp.select(item)
                 }
             }
         })
     }
 
-    @IBAction func handlePresetPopup(sender: NSMenuItem) {
+    @IBAction func handlePresetPopup(_ sender: NSMenuItem) {
         if let preset = (sender.representedObject as? HBPreset) {
             self.preset = preset
         }
@@ -179,10 +179,10 @@ class SettingsController: NSViewController, Toolbared {
 
     // MARK: - Audio and subtitles language popup
 
-    private func buildLanguagesMenu<T: CollectionType where T.Generator.Element == String>(menu: NSMenu, languages: T) {
+    private func buildLanguagesMenu<T: Collection where T.Iterator.Element == String>(_ menu: NSMenu, languages: T) {
         for lang in languages {
             let item = NSMenuItem()
-            item.title = HBUtilities.languageCodeForIso6392Code(lang)
+            item.title = HBUtilities.languageCode(forIso6392Code: lang)
             item.representedObject = lang
             menu.addItem(item)
         }
@@ -193,7 +193,7 @@ class SettingsController: NSViewController, Toolbared {
         buildLanguagesMenu(audioPopUp.menu!, languages: languages)
     }
 
-    @IBAction func handleAudioPopUp(sender: NSPopUpButton) {
+    @IBAction func handleAudioPopUp(_ sender: NSPopUpButton) {
         if let lang = sender.selectedItem?.representedObject as? String {
             self.preferredAudioLang = lang
         }
@@ -204,7 +204,7 @@ class SettingsController: NSViewController, Toolbared {
         buildLanguagesMenu(subtitlesPopUp.menu!, languages: languages)
     }
 
-    @IBAction func handleSubtitlesPopup(sender: NSPopUpButton) {
+    @IBAction func handleSubtitlesPopup(_ sender: NSPopUpButton) {
         if let lang = sender.selectedItem?.representedObject as? String {
             self.preferredSubtitlesLang = lang
         }
@@ -212,7 +212,7 @@ class SettingsController: NSViewController, Toolbared {
 
     // MARK: - Toolbar
 
-    func prepareJob(title: HBTitle) -> HBJob {
+    func prepareJob(_ title: HBTitle) -> HBJob {
         let p = self.preset.mutableCopy() as! HBMutablePreset
 
         let audioLanguages = Set(title.audioTracks.flatMap{ $0[keyAudioTrackLanguageIsoCode] as? String })
@@ -228,12 +228,12 @@ class SettingsController: NSViewController, Toolbared {
 
         let job = HBJob(title: title, andPreset: self.preset)
         let fileName = title.name + ".mp4"
-        job.destURL = self.destURL.URLByAppendingPathComponent(fileName)
+        job.destURL = try! self.destURL.appendingPathComponent(fileName)
 
         return job
     }
 
-    @IBAction func handleEncode(sender: AnyObject) {
+    @IBAction func handleEncode(_ sender: AnyObject) {
         var jobs = [HBJob]()
 
         for item in items.filter({ $0.enabled }) {
@@ -241,7 +241,7 @@ class SettingsController: NSViewController, Toolbared {
             jobs.append(job)
         }
 
-        self.delegate?.encodeJobs(jobs)
+        self.delegate?.encode(jobs: jobs)
     }
 
 }

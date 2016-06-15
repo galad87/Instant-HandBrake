@@ -10,7 +10,7 @@ import Cocoa
 import HandBrakeKit
 
 protocol DocumentViewControllerDelegate : class {
-    func setLeftToolbarView(view: NSView)
+    func setLeftToolbarView(_ view: NSView)
 }
 
 class DocumentViewController: NSViewController, SettingsControllerDelegate, ScanControllerDelegate {
@@ -18,7 +18,7 @@ class DocumentViewController: NSViewController, SettingsControllerDelegate, Scan
     private let core: HBCore = HBCore()
     private let presetsManager: HBPresetsManager
 
-    private let fileURL: NSURL
+    private let fileURL: URL
 
     private lazy var scanController : ScanController  = {
         return ScanController(core: self.core, delegate: self)!
@@ -36,7 +36,7 @@ class DocumentViewController: NSViewController, SettingsControllerDelegate, Scan
 
     private weak var delegate: DocumentViewControllerDelegate?
 
-    init?(fileURL: NSURL, presetsManager: HBPresetsManager, delegate: DocumentViewControllerDelegate) {
+    init?(fileURL: URL, presetsManager: HBPresetsManager, delegate: DocumentViewControllerDelegate) {
         self.fileURL = fileURL
         self.presetsManager = presetsManager
         self.delegate = delegate
@@ -58,32 +58,32 @@ class DocumentViewController: NSViewController, SettingsControllerDelegate, Scan
         scanController.scan(fileURL)
     }
 
-    override func addChildViewController(childViewController: NSViewController) {
+    override func addChildViewController(_ childViewController: NSViewController) {
         childViewController.view.frame = self.view.bounds
-        childViewController.view.autoresizingMask = [.ViewWidthSizable, .ViewHeightSizable]
+        childViewController.view.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
 
         super.addChildViewController(childViewController)
     }
 
-    private func transitionFromViewController<T: NSViewController where T:Toolbared>(fromViewController: NSViewController, toViewController: T) {
+    private func transitionFromViewController<T: NSViewController where T:Toolbared>(_ fromViewController: NSViewController, toViewController: T) {
         addChildViewController(toViewController)
 
         CATransaction.begin()
         delegate?.setLeftToolbarView(toViewController.leftToolbarItem)
-        transitionFromViewController(fromViewController, toViewController: toViewController, options: .SlideForward, completionHandler: nil)
+        transition(from: fromViewController, to: toViewController, options: .slideForward, completionHandler: nil)
         CATransaction.commit()
     }
 
-    func scanDone(titles: [HBTitle]) {
+    func scanDone(_ titles: [HBTitle]) {
         if titles.count > 0 {
             transitionFromViewController(scanController, toViewController: settingsController)
         }
     }
 
-    func encodeJobs(jobs: [HBJob]) {
+    func encode(jobs: [HBJob]) {
         if jobs.count > 0 {
             transitionFromViewController(settingsController, toViewController: encodeController)
-            encodeController.encodeJobs(jobs)
+            encodeController.encode(jobs: jobs)
         }
     }
 

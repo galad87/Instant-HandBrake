@@ -63,7 +63,7 @@
 
 /* Begin PBXFileReference section */
 		A91F83C81C88575500B2E8CC /* HandBrakeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HandBrakeKit.framework; sourceTree = SOURCE_ROOT; };
-		A92D91811C7F44B50096C7EA /* Instant HandBrake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instant HandBrake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A92D91811C7F44B50096C7EA /* InstantHandBrake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstantHandBrake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92D91841C7F44B50096C7EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A92D91861C7F44B50096C7EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A92D91891C7F44B50096C7EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		A92D91821C7F44B50096C7EA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A92D91811C7F44B50096C7EA /* Instant HandBrake.app */,
+				A92D91811C7F44B50096C7EA /* InstantHandBrake.app */,
 				A92D91901C7F44B50096C7EA /* InstantHandBrakeTests.xctest */,
 				A92D919B1C7F44B50096C7EA /* InstantHandBrakeUITests.xctest */,
 			);
@@ -185,9 +185,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A92D91801C7F44B50096C7EA /* Instant HandBrake */ = {
+		A92D91801C7F44B50096C7EA /* InstantHandBrake */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A92D91A41C7F44B50096C7EA /* Build configuration list for PBXNativeTarget "Instant HandBrake" */;
+			buildConfigurationList = A92D91A41C7F44B50096C7EA /* Build configuration list for PBXNativeTarget "InstantHandBrake" */;
 			buildPhases = (
 				A92D917D1C7F44B50096C7EA /* Sources */,
 				A92D917E1C7F44B50096C7EA /* Frameworks */,
@@ -198,9 +198,9 @@
 			);
 			dependencies = (
 			);
-			name = "Instant HandBrake";
+			name = InstantHandBrake;
 			productName = InstantHandBrake;
-			productReference = A92D91811C7F44B50096C7EA /* Instant HandBrake.app */;
+			productReference = A92D91811C7F44B50096C7EA /* InstantHandBrake.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A92D918F1C7F44B50096C7EA /* InstantHandBrakeTests */ = {
@@ -246,18 +246,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = HandBrake;
 				TargetAttributes = {
 					A92D91801C7F44B50096C7EA = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					A92D918F1C7F44B50096C7EA = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = A92D91801C7F44B50096C7EA;
 					};
 					A92D919A1C7F44B50096C7EA = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = A92D91801C7F44B50096C7EA;
 					};
 				};
@@ -275,7 +278,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A92D91801C7F44B50096C7EA /* Instant HandBrake */,
+				A92D91801C7F44B50096C7EA /* InstantHandBrake */,
 				A92D918F1C7F44B50096C7EA /* InstantHandBrakeTests */,
 				A92D919A1C7F44B50096C7EA /* InstantHandBrakeUITests */,
 			);
@@ -353,12 +356,12 @@
 /* Begin PBXTargetDependency section */
 		A92D91921C7F44B50096C7EA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A92D91801C7F44B50096C7EA /* Instant HandBrake */;
+			target = A92D91801C7F44B50096C7EA /* InstantHandBrake */;
 			targetProxy = A92D91911C7F44B50096C7EA /* PBXContainerItemProxy */;
 		};
 		A92D919D1C7F44B50096C7EA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A92D91801C7F44B50096C7EA /* Instant HandBrake */;
+			target = A92D91801C7F44B50096C7EA /* InstantHandBrake */;
 			targetProxy = A92D919C1C7F44B50096C7EA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -515,6 +518,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -533,6 +537,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fr.handbrake.InstantHandBrake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -545,6 +551,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.handbrake.InstantHandBrakeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InstantHandBrake.app/Contents/MacOS/InstantHandBrake";
 			};
 			name = Debug;
@@ -558,6 +565,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.handbrake.InstantHandBrakeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InstantHandBrake.app/Contents/MacOS/InstantHandBrake";
 			};
 			name = Release;
@@ -570,6 +579,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.handbrake.InstantHandBrakeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = InstantHandBrake;
 			};
 			name = Debug;
@@ -582,6 +592,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fr.handbrake.InstantHandBrakeUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = InstantHandBrake;
 			};
 			name = Release;
@@ -598,7 +610,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A92D91A41C7F44B50096C7EA /* Build configuration list for PBXNativeTarget "Instant HandBrake" */ = {
+		A92D91A41C7F44B50096C7EA /* Build configuration list for PBXNativeTarget "InstantHandBrake" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A92D91A51C7F44B50096C7EA /* Debug */,

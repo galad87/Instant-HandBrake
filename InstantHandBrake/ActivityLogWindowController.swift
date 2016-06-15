@@ -10,7 +10,7 @@ import Cocoa
 
 class ActivityLogWindowController: NSWindowController {
 
-    let storage = NSTextStorage()
+    private let storage = NSTextStorage()
 
     @IBOutlet var textView: NSTextView!
 
@@ -24,19 +24,19 @@ class ActivityLogWindowController: NSWindowController {
         textView.layoutManager?.replaceTextStorage(storage)
     }
 
-    override func showWindow(sender: AnyObject?) {
-        if (window?.visible == false) {
+    override func showWindow(_ sender: AnyObject?) {
+        if (window?.isVisible == false) {
             textView.scrollToEndOfDocument(nil)
         }
         super.showWindow(sender)
     }
 
-    func appendString(string: String) {
-        let attributedString = NSAttributedString(string: string)
-        storage.appendAttributedString(attributedString)
+    func appendString(_ string: String) {
+        let attributedString = AttributedString(string: string)
+        storage.append(attributedString)
 
         if let window = window, let textView = textView {
-            if window.visible {
+            if window.isVisible {
                 textView.scrollToEndOfDocument(nil)
             }
         }

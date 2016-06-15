@@ -15,20 +15,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, DocumentDelegate {
     let activityWindow = ActivityLogWindowController()
     var presetsManager = HBPresetsManager()
 
-    let presetsURL: NSURL = {
-        AppDelegate.appSupportURL().URLByAppendingPathComponent("UserPresets.json")
+    let presetsURL: URL = {
+        try! AppDelegate.appSupportURL().appendingPathComponent("UserPresets.json")
     }()
 
     var documentControllers = [DocumentController]()
 
-    private static func appSupportURL() -> NSURL {
-        let fileManager = NSFileManager.defaultManager()
-        if let url = fileManager.URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)
-            .first?.URLByAppendingPathComponent("Instant HandBrake") {
+    private static func appSupportURL() -> URL {
+        let fileManager = FileManager.default()
+        if let url = try! fileManager.urlsForDirectory(.applicationSupportDirectory, inDomains: .userDomainMask)
+            .first?.appendingPathComponent("Instant HandBrake") {
 
             do {
-                if let path = url.path where fileManager.fileExistsAtPath(path) == false {
-                    try fileManager.createDirectoryAtURL(url, withIntermediateDirectories: true, attributes: [:])
+                if let path = url.path where fileManager.fileExists(atPath: path) == false {
+                    try fileManager.createDirectory(at: url, withIntermediateDirectories: true, attributes: [:])
                 }
             }
             catch _ {
@@ -42,67 +42,67 @@ class AppDelegate: NSObject, NSApplicationDelegate, DocumentDelegate {
         }
     }
 
-    func applicationWillFinishLaunching(notification: NSNotification) {
+    func applicationWillFinishLaunching(_ notification: Notification) {
         HBCore.initGlobal()
-        presetsManager = HBPresetsManager(URL: presetsURL)
+        presetsManager = HBPresetsManager(url: presetsURL)
 
-        OutputRedirect.stdoutRedirect.addListener { (string: String) in
+        _ = OutputRedirect.stdoutRedirect.addListener { (string: String) in
             self.activityWindow.appendString(string)
         }
 
-        OutputRedirect.stderrRedirect.addListener { (string: String) in
+        _ = OutputRedirect.stderrRedirect.addListener { (string: String) in
             self.activityWindow.appendString(string)
         }
     }
 
-    func applicationDidFinishLaunching(notification: NSNotification) {
+    func applicationDidFinishLaunching(_ notification: Notification) {
         if documentControllers.count == 0 {
             openDocument(self)
         }
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         presetsManager.savePresets()
         HBCore.closeGlobal()
     }
 
-    @IBAction func showActivityLog(sender: AnyObject) {
+    @IBAction func showActivityLog(_ sender: AnyObject) {
         activityWindow.showWindow(self)
     }
 
-    func addDocumentController(fileURL: NSURL) {
+    func addDocumentController(_ fileURL: URL) {
         let documentController = DocumentController(fileURL: fileURL, presetsManager: presetsManager, delegate: self)
         documentControllers.append(documentController)
         documentController.showWindow(self)
 
-        NSDocumentController.sharedDocumentController().noteNewRecentDocumentURL(fileURL)
+        NSDocumentController.shared().noteNewRecentDocumentURL(fileURL)
     }
 
-    func documentDidClose(document: DocumentController) {
+    func documentDidClose(_ document: DocumentController) {
         documentControllers = documentControllers.filter{ $0 !== document }
     }
 
-    @IBAction func openDocument(sender: AnyObject) {
+    @IBAction func openDocument(_ sender: AnyObject) {
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
 
-        panel.beginWithCompletionHandler { (result) in
+        panel.begin { result in
             if result == NSFileHandlingPanelOKButton {
-                if let url = panel.URL {
+                if let url = panel.url {
                     self.addDocumentController(url)
                 }
             }
         }
     }
 
-    func application(sender: NSApplication, openFiles filenames: [String]) {
+    func application(_ sender: NSApplication, openFiles filenames: [String]) {
         if let filename =  filenames.first {
-            let fileURL = NSURL(fileURLWithPath: filename)
+            let fileURL = URL(fileURLWithPath: filename)
             addDocumentController(fileURL)
         }
     }
 
-    override func validateMenuItem(menuItem: NSMenuItem) -> Bool {
+    func validate(_ menuItem: NSMenuItem) -> Bool {
         return true
     }
 

@@ -10,7 +10,7 @@ import Cocoa
 import HandBrakeKit
 
 protocol ScanControllerDelegate : class {
-    func scanDone(titles: [HBTitle])
+    func scanDone(_ titles: [HBTitle])
 }
 
 class ScanController: NSViewController, Toolbared {
@@ -38,23 +38,23 @@ class ScanController: NSViewController, Toolbared {
         super.viewDidLoad()
     }
 
-    func scan(fileURL: NSURL) {
+    func scan(_ fileURL: URL) {
         self.core.scanURL(fileURL, titleIndex: 0, previews: 10, minDuration: 10,
                           progressHandler: handleProgress,
                           completionHandler: handleCompletion)
 
     }
 
-    @IBAction func handleCancel(sender: AnyObject) {
+    @IBAction func handleCancel(_ sender: AnyObject) {
         self.core.cancelScan()
     }
     
-    private func handleProgress(state: HBState, progress: HBProgress, info: String) {
+    private func handleProgress(_ state: HBState, progress: HBProgress, info: String) {
         percentLabel.stringValue = String(format: "%.0f %%", arguments: [progress.percent * 100])
         progressIndicator.angle = Int(progress.percent * 360)
     }
 
-    private func handleCompletion(result: HBCoreResult) {
+    private func handleCompletion(_ result: HBCoreResult) {
         let titles = core.titles
         if titles.count > 0 {
             delegate?.scanDone(titles)

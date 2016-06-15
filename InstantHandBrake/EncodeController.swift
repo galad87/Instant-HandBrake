@@ -44,21 +44,21 @@ class EncodeController: NSViewController, Toolbared {
         super.viewDidLoad()
 
         etaLabel.stringValue = ""
-        showInFinderButton.hidden = true
+        showInFinderButton.isHidden = true
     }
 
-    func encodeJobs(jobs: [HBJob]) {
+    func encode(jobs: [HBJob]) {
         self.jobs = jobs
         self.remainingJobs = jobs;
 
-        encodeNextJob()
+        _ = encodeNextJob()
     }
 
     private func encodeNextJob() -> Bool {
         if let job = remainingJobs.first {
-            remainingJobs.removeAtIndex(remainingJobs.indexOf(job)!)
+            remainingJobs.remove(at: remainingJobs.index(of: job)!)
 
-            core.encodeJob(job, progressHandler: handleProgress,
+            core.encode(job, progressHandler: handleProgress,
                            completionHandler: handleCompletion)
 
             if jobs.count > 1 {
@@ -67,29 +67,29 @@ class EncodeController: NSViewController, Toolbared {
                 jobNumberLabel.stringValue = "\(current) of \(total)"
             }
             else {
-                jobNumberLabel.hidden = true
+                jobNumberLabel.isHidden = true
             }
             return true
         }
         return false
     }
 
-    @IBAction func showInFinder(sender: AnyObject) {
+    @IBAction func showInFinder(_ sender: AnyObject) {
         let urls = jobs.flatMap{ $0.destURL }
 
-        let workspace = NSWorkspace.sharedWorkspace()
-        workspace.activateFileViewerSelectingURLs(urls)
+        let workspace = NSWorkspace.shared()
+        workspace.activateFileViewerSelecting(urls)
     }
 
-    @IBAction func handleCancel(sender: AnyObject) {
+    @IBAction func handleCancel(_ sender: AnyObject) {
         let alert = NSAlert()
         alert.messageText = "Stop This Encode?"
         alert.informativeText = "Your movie will be lost if you don't continue encoding."
-        alert.addButtonWithTitle("Keep Encoding")
-        alert.addButtonWithTitle("Stop Encoding")
-        alert.alertStyle = .CriticalAlertStyle
+        alert.addButton(withTitle: "Keep Encoding")
+        alert.addButton(withTitle: "Stop Encoding")
+        alert.alertStyle = .critical
 
-        alert.beginSheetModalForWindow(self.view.window!) { (response: NSModalResponse) in
+        alert.beginSheetModal(for: self.view.window!) { (response: NSModalResponse) in
             if response == NSAlertSecondButtonReturn {
                 self.jobs.removeAll()
                 self.remainingJobs.removeAll()
@@ -100,18 +100,18 @@ class EncodeController: NSViewController, Toolbared {
         self.alert = alert
     }
 
-    @IBAction func handlePause(sender: AnyObject) {
-        if core.state == .Paused {
+    @IBAction func handlePause(_ sender: AnyObject) {
+        if core.state == .paused {
             core.resume()
-            pauseButton.image = NSImage(imageLiteral: "pauseBlackTemplate")
+            pauseButton.image = NSImage(imageLiteralResourceName: "pauseBlackTemplate")
         }
-        else if core.state == .Working {
+        else if core.state == .working {
             core.pause()
-            pauseButton.image = NSImage(imageLiteral: "playBackTemplate")
+            pauseButton.image = NSImage(imageLiteralResourceName: "playBackTemplate")
         }
     }
 
-    private func handleProgress(state: HBState, progress: HBProgress, info: String) {
+    private func handleProgress(_ state: HBState, progress: HBProgress, info: String) {
         percentLabel.stringValue = String(format: "%.0f %%", arguments: [progress.percent * 100])
         if progress.seconds > -1 {
             etaLabel.stringValue = String(format: "%02dh%02dm%02ds", arguments: [progress.hours, progress.minutes, progress.seconds])
@@ -120,26 +120,26 @@ class EncodeController: NSViewController, Toolbared {
         self.circularIndicator.angle = min(Int(progress.percent * 360), 360)
     }
 
-    private func handleCompletion(result: HBCoreResult) {
+    private func handleCompletion(_ result: HBCoreResult) {
         if self.encodeNextJob() == false {
             circularIndicator.angle = 360
 
             percentLabel.stringValue = "100 %"
 
             switch result {
-            case .Done:
+            case .done:
                 etaLabel.stringValue = NSLocalizedString("Completed", comment: "Encode -> Completed")
-            case .Cancelled:
+            case .cancelled:
                 etaLabel.stringValue = NSLocalizedString("Cancelled", comment: "Encode -> Cancelled")
-            case .Failed:
+            case .failed:
                 etaLabel.stringValue = NSLocalizedString("Failed", comment: "Encode -> Failed")
             }
 
-            pauseButton.enabled = false
-            stopButton.enabled = false
+            pauseButton.isEnabled = false
+            stopButton.isEnabled = false
 
-            jobNumberLabel.hidden = true
-            showInFinderButton.hidden = false
+            jobNumberLabel.isHidden = true
+            showInFinderButton.isHidden = false
         }
 
         if let alert = self.alert {

@@ -10,12 +10,12 @@ import Cocoa
 import HandBrakeKit
 
 protocol DocumentDelegate : class {
-    func documentDidClose(document: DocumentController)
+    func documentDidClose(_ document: DocumentController)
 }
 
 class DocumentController: NSWindowController, NSWindowDelegate, DocumentViewControllerDelegate {
 
-    private let fileURL: NSURL
+    private let fileURL: URL
     private let presetsManager: HBPresetsManager
 
     private weak var delegate: DocumentDelegate?
@@ -26,7 +26,7 @@ class DocumentController: NSWindowController, NSWindowDelegate, DocumentViewCont
         return "DocumentController"
     }
 
-    init(fileURL: NSURL, presetsManager: HBPresetsManager, delegate: DocumentDelegate) {
+    init(fileURL: URL, presetsManager: HBPresetsManager, delegate: DocumentDelegate) {
         self.presetsManager = presetsManager
         self.fileURL = fileURL
         self.delegate = delegate
@@ -46,16 +46,16 @@ class DocumentController: NSWindowController, NSWindowDelegate, DocumentViewCont
         }
 
         window.title = self.fileURL.lastPathComponent!
-        window.titleVisibility = .Hidden
+        window.titleVisibility = .hidden
 
         window.contentViewController = DocumentViewController(fileURL: self.fileURL, presetsManager: self.presetsManager, delegate: self)
     }
 
-    func windowWillClose(notification: NSNotification) {
+    func windowWillClose(_ notification: Notification) {
         delegate?.documentDidClose(self)
     }
 
-    func setLeftToolbarView(view: NSView) {
+    func setLeftToolbarView(_ view: NSView) {
         if let oldView = self.leftItem.view?.subviews.first {
             self.leftItem.view?.animator().replaceSubview(oldView, with: view)
         }
