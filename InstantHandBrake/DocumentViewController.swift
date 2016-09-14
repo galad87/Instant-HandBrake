@@ -65,7 +65,7 @@ class DocumentViewController: NSViewController, SettingsControllerDelegate, Scan
         super.addChildViewController(childViewController)
     }
 
-    private func transitionFromViewController<T: NSViewController where T:Toolbared>(_ fromViewController: NSViewController, toViewController: T) {
+    private func transitionFromViewController<T: NSViewController>(_ fromViewController: NSViewController, toViewController: T) where T:Toolbared {
         addChildViewController(toViewController)
 
         CATransaction.begin()

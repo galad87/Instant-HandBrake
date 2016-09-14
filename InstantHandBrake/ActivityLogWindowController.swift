@@ -24,7 +24,7 @@ class ActivityLogWindowController: NSWindowController {
         textView.layoutManager?.replaceTextStorage(storage)
     }
 
-    override func showWindow(_ sender: AnyObject?) {
+    override func showWindow(_ sender: Any?) {
         if (window?.isVisible == false) {
             textView.scrollToEndOfDocument(nil)
         }
@@ -32,7 +32,7 @@ class ActivityLogWindowController: NSWindowController {
     }
 
     func appendString(_ string: String) {
-        let attributedString = AttributedString(string: string)
+        let attributedString = NSAttributedString(string: string)
         storage.append(attributedString)
 
         if let window = window, let textView = textView {

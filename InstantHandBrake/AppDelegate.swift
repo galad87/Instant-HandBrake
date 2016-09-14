@@ -16,18 +16,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, DocumentDelegate {
     var presetsManager = HBPresetsManager()
 
     let presetsURL: URL = {
-        try! AppDelegate.appSupportURL().appendingPathComponent("UserPresets.json")
+        AppDelegate.appSupportURL().appendingPathComponent("UserPresets.json")
     }()
 
     var documentControllers = [DocumentController]()
 
     private static func appSupportURL() -> URL {
-        let fileManager = FileManager.default()
-        if let url = try! fileManager.urlsForDirectory(.applicationSupportDirectory, inDomains: .userDomainMask)
+        let fileManager = FileManager.default
+        if let url = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask)
             .first?.appendingPathComponent("Instant HandBrake") {
 
             do {
-                if let path = url.path where fileManager.fileExists(atPath: path) == false {
+                if fileManager.fileExists(atPath: url.path) == false {
                     try fileManager.createDirectory(at: url, withIntermediateDirectories: true, attributes: [:])
                 }
             }

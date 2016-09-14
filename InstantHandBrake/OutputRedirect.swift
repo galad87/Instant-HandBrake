@@ -16,9 +16,9 @@ public class OutputRedirect {
     public static let stderrRedirect = OutputRedirect(stream: stderr)
 
     public class ListenerEntry {
-        private let f: (String) -> Void
+        fileprivate let f: (String) -> Void
 
-        private init(f: (String) -> Void) {
+        fileprivate init(f: @escaping (String) -> Void) {
             self.f = f
         }
     }
@@ -30,24 +30,24 @@ public class OutputRedirect {
     private let stream: UnsafeMutablePointer<FILE>
 
     /// Pointer to old write function for the stream.
-    private var oldWriteFunc: (@convention(c) (UnsafeMutablePointer<Void>?, UnsafePointer<Int8>?, Int32) -> Int32)?
+    private var oldWriteFunc: (@convention(c) (UnsafeMutableRawPointer?, UnsafePointer<Int8>?, Int32) -> Int32)?
 
     private init(stream: UnsafeMutablePointer<FILE>) {
         self.stream = stream
     }
 
     /// Function that replaces stdout->_write and forwards stdout to g_stdoutRedirect.
-    private static let stdoutwrite: @convention(c) (UnsafeMutablePointer<Void>?, UnsafePointer<Int8>?, Int32) -> Int32 = { inFD, buffer, size in
+    private static let stdoutwrite: @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<Int8>?, Int32) -> Int32 = { inFD, buffer, size in
         guard let buffer = buffer else { return 0 }
-        let data = Data(bytes: UnsafePointer<UInt8>(buffer), count: Int(size))
+        let data = Data(bytes: buffer, count: Int(size))
         stdoutRedirect.forwardOutput(data)
         return size
     }
 
     /// Function that replaces stderr->_write and forwards stdout to g_stdoutRedirect.
-    private static let stderrwrite: @convention(c) (UnsafeMutablePointer<Void>?, UnsafePointer<Int8>?, Int32) -> Int32 = { inFD, buffer, size in
+    private static let stderrwrite: @convention(c) (UnsafeMutableRawPointer?, UnsafePointer<Int8>?, Int32) -> Int32 = { inFD, buffer, size in
         guard let buffer = buffer else { return 0 }
-        let data = Data(bytes: UnsafePointer<UInt8>(buffer), count: Int(size))
+        let data = Data(bytes: buffer, count: Int(size))
         stderrRedirect.forwardOutput(data)
         return size
     }
@@ -79,7 +79,7 @@ public class OutputRedirect {
         }
     }
 
-    public func addListener(_ f: (String) -> Void) -> ListenerEntry {
+    public func addListener(_ f: @escaping (String) -> Void) -> ListenerEntry {
         let entry = ListenerEntry(f: f)
         entries.append(entry)
 

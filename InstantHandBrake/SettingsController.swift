@@ -93,7 +93,7 @@ class SettingsController: NSViewController, Toolbared {
         panel.prompt = "Choose"
 
         func modalCompletionHandler(_ modalResponse: NSModalResponse) {
-            if let URL = panel.url where modalResponse == NSFileHandlingPanelOKButton {
+            if let URL = panel.url, modalResponse == NSFileHandlingPanelOKButton {
                 let item = self.prepareDestinationPopUpItem(URL)
 
                 self.destinationPopUp.menu?.removeItem(at: 0)
@@ -101,7 +101,7 @@ class SettingsController: NSViewController, Toolbared {
 
                 self.destURL = URL
 
-                UserDefaults.standard().setURL(URL, forKey: "destination")
+                UserDefaults.standard.set(URL, forKey: "destination")
             }
 
             self.destinationPopUp.selectItem(at: 0)
@@ -117,10 +117,10 @@ class SettingsController: NSViewController, Toolbared {
 
     private func prepareDestinationPopUpItem(_ destURL: URL) -> NSMenuItem {
         let sel = #selector(self.handleDestination(_:))
-        let item = NSMenuItem(title: destURL.lastPathComponent!, action: sel, keyEquivalent: "")
+        let item = NSMenuItem(title: destURL.lastPathComponent, action: sel, keyEquivalent: "")
         item.target = self
 
-        let icon = NSWorkspace.shared().icon(forFile: destURL.path!)
+        let icon = NSWorkspace.shared().icon(forFile: destURL.path)
         icon.size = NSSize(width: 16, height: 16)
         item.image = icon
 
@@ -128,8 +128,7 @@ class SettingsController: NSViewController, Toolbared {
     }
 
     private func buildDestinationPopUp() {
-        if let savedURL = UserDefaults.standard().url(forKey: "destination"),
-            let path = savedURL.path where FileManager.default().fileExists(atPath: path) {
+        if let savedURL = UserDefaults.standard.url(forKey: "destination"), FileManager.default.fileExists(atPath: savedURL.path) {
             self.destURL = savedURL
         }
         else if let movieFolderURL = NSSearchPathForDirectoriesInDomains(.moviesDirectory, .userDomainMask, true).first {
@@ -147,8 +146,8 @@ class SettingsController: NSViewController, Toolbared {
     // MARK: - Presets popup
 
     private func buildPresetPopUp() {
-        self.presetsManager.root.enumerateObjects({ (obj: AnyObject, idx: IndexPath, stop: UnsafeMutablePointer<ObjCBool>) in
-            if let preset = obj as? HBPreset where (idx as NSIndexPath).length > 0 {
+        self.presetsManager.root.enumerateObjects({ (obj: Any, idx: IndexPath, stop: UnsafeMutablePointer<ObjCBool>) in
+            if let preset = obj as? HBPreset , (idx as NSIndexPath).length > 0 {
 
                 let item = NSMenuItem()
                 item.title = preset.name
@@ -179,7 +178,7 @@ class SettingsController: NSViewController, Toolbared {
 
     // MARK: - Audio and subtitles language popup
 
-    private func buildLanguagesMenu<T: Collection where T.Iterator.Element == String>(_ menu: NSMenu, languages: T) {
+    private func buildLanguagesMenu<T: Collection>(_ menu: NSMenu, languages: T) where T.Iterator.Element == String {
         for lang in languages {
             let item = NSMenuItem()
             item.title = HBUtilities.languageCode(forIso6392Code: lang)
@@ -228,7 +227,7 @@ class SettingsController: NSViewController, Toolbared {
 
         let job = HBJob(title: title, andPreset: self.preset)
         let fileName = title.name + ".mp4"
-        job.destURL = try! self.destURL.appendingPathComponent(fileName)
+        job.destURL = self.destURL.appendingPathComponent(fileName)
 
         return job
     }

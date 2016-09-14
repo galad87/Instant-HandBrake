@@ -32,7 +32,7 @@ public enum KDCircularProgressGlowMode {
 }
 
 @IBDesignable
-public class KDCircularProgress: NSView {
+public class KDCircularProgress: NSView, CAAnimationDelegate {
     
     private struct ConversionFunctions {
         static func DegreesToRadians (_ value:CGFloat) -> CGFloat {
@@ -142,7 +142,7 @@ public class KDCircularProgress: NSView {
         }
     }
     
-    @IBInspectable public var trackColor: NSColor = NSColor.black() {
+    @IBInspectable public var trackColor: NSColor = NSColor.black {
         didSet {
             progressLayer.trackColor = trackColor
             progressLayer.setNeedsDisplay()
@@ -154,7 +154,7 @@ public class KDCircularProgress: NSView {
             if let color = progressInsideFillColor {
                 progressLayer.progressInsideFillColor = color
             } else {
-                progressLayer.progressInsideFillColor = NSColor.clear()
+                progressLayer.progressInsideFillColor = NSColor.clear
             }
         }
     }
@@ -210,7 +210,7 @@ public class KDCircularProgress: NSView {
     private func setInitialValues() {
         radius = (frame.size.width/2.0) * 0.8 //We always apply a 20% padding, stopping glows from being clipped
         //backgroundColor = .clearColor()
-        setColors(NSColor.white(), NSColor.red())
+        setColors(NSColor.white, NSColor.red)
     }
     
     private func refreshValues() {
@@ -291,7 +291,7 @@ public class KDCircularProgress: NSView {
         return progressLayer.animation(forKey: "angle") != nil
     }
     
-    override public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let completionBlock = animationCompletionBlock {
             completionBlock(flag)
             animationCompletionBlock = nil
@@ -331,7 +331,7 @@ public class KDCircularProgress: NSView {
         var progressThickness: CGFloat!
         var trackThickness: CGFloat!
         var trackColor: NSColor!
-        var progressInsideFillColor: NSColor = NSColor.clear()
+        var progressInsideFillColor: NSColor = NSColor.clear
         var colorsArray: [NSColor]! {
             didSet {
                 invalidateGradientCache()
@@ -360,7 +360,7 @@ public class KDCircularProgress: NSView {
             return key == "angle" ? true : super.needsDisplay(forKey: key)
         }
         
-        override init(layer: AnyObject) {
+        override init(layer: Any) {
             super.init(layer: layer)
             let progressLayer = layer as! KDCircularProgressViewLayer
             radius = progressLayer.radius
@@ -392,11 +392,12 @@ public class KDCircularProgress: NSView {
             NSGraphicsContext.setCurrent(nsgc)
             let rect = bounds
             let size = rect.size
-            
+            let center = CGPoint(x: CGFloat(size.width/2.0), y: CGFloat(size.height/2.0))
+
             let trackLineWidth: CGFloat = radius * trackThickness
             let progressLineWidth = radius * progressThickness
             let arcRadius = max(radius - trackLineWidth/2, radius - progressLineWidth/2)
-            ctx.addArc(centerX: CGFloat(size.width/2.0), y: CGFloat(size.height/2.0), radius: arcRadius, startAngle: 0, endAngle: CGFloat(M_PI * 2), clockwise: 0)
+            ctx.addArc(center: center, radius: arcRadius, startAngle: 0, endAngle: CGFloat(M_PI * 2), clockwise: false)
             trackColor.set()
             ctx.setStrokeColor(trackColor.cgColor)
             ctx.setFillColor(progressInsideFillColor.cgColor)
@@ -410,10 +411,10 @@ public class KDCircularProgress: NSView {
             let reducedAngle = UtilityFunctions.Mod(angle, range: 360, minMax: (0, 360))
             let fromAngle = ConversionFunctions.DegreesToRadians(CGFloat(-startAngle))
             let toAngle = ConversionFunctions.DegreesToRadians(CGFloat((clockwise == true ? -reducedAngle : reducedAngle) - startAngle))
-            imageCtx?.addArc(centerX: CGFloat(size.width/2.0),y: CGFloat(size.height/2.0), radius: arcRadius, startAngle: fromAngle, endAngle: toAngle, clockwise: clockwise == true ? 1 : 0)
+            imageCtx?.addArc(center: center, radius: arcRadius, startAngle: fromAngle, endAngle: toAngle, clockwise: clockwise)
             let glowValue = GlowConstants.glowAmountForAngle(reducedAngle, glowAmount: glowAmount, glowMode: glowMode, size: size.width)
             if glowValue > 0 {
-                imageCtx?.setShadow(offset: CGSize.zero, blur: glowValue, color: NSColor.black().cgColor)
+                imageCtx?.setShadow(offset: CGSize.zero, blur: glowValue, color: NSColor.black.cgColor)
             }
             imageCtx?.setLineCap(roundedCorners == true ? .round : .butt)
             imageCtx?.setLineWidth(progressLineWidth)
@@ -423,7 +424,7 @@ public class KDCircularProgress: NSView {
             image.unlockFocus()
             
             ctx.saveGState()
-            ctx.clipToMask(bounds, mask: drawMask)
+            ctx.clip(to:bounds, mask: drawMask)
             
             //Gradient - Fill
             if colorsArray.count > 1 {
@@ -438,7 +439,7 @@ public class KDCircularProgress: NSView {
                 }
                 
                 for color in rgbColorsArray {
-                    let colorComponents: UnsafePointer<CGFloat> = color.cgColor.components!
+                    let colorComponents = color.cgColor.components!
                     componentsArray.append(contentsOf: [colorComponents[0],colorComponents[1],colorComponents[2],1.0])
                 }
                 
@@ -466,7 +467,7 @@ public class KDCircularProgress: NSView {
             if let g = self.gradientCache {
                 gradient = g
             } else {
-                guard let g = CGGradient(colorComponentsSpace: baseSpace, components: componentsArray, locations: locations,count: componentsArray.count / 4) else { return }
+                guard let g = CGGradient(colorSpace: baseSpace, colorComponents: componentsArray, locations: locations,count: componentsArray.count / 4) else { return }
                 self.gradientCache = g
                 gradient = g
             }

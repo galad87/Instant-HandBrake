@@ -45,7 +45,7 @@ class DocumentController: NSWindowController, NSWindowDelegate, DocumentViewCont
             fatalError("`window` is expected to be non nil by this time.")
         }
 
-        window.title = self.fileURL.lastPathComponent!
+        window.title = self.fileURL.lastPathComponent
         window.titleVisibility = .hidden
 
         window.contentViewController = DocumentViewController(fileURL: self.fileURL, presetsManager: self.presetsManager, delegate: self)
