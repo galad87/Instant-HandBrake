@@ -75,7 +75,12 @@ class EncodeController: NSViewController, Toolbared {
     }
 
     @IBAction func showInFinder(_ sender: AnyObject) {
-        let urls = jobs.flatMap{ $0.destURL }
+        let urls = jobs.flatMap{ job -> URL? in
+            if let url = job.outputURL, let name = job.outputFileName {
+                return url.appendingPathComponent(name)
+            }
+            return nil
+        }
 
         let workspace = NSWorkspace.shared()
         workspace.activateFileViewerSelecting(urls)

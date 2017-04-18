@@ -227,7 +227,8 @@ class SettingsController: NSViewController, Toolbared {
 
         let job = HBJob(title: title, andPreset: self.preset)
         let fileName = title.name + ".mp4"
-        job.destURL = self.destURL.appendingPathComponent(fileName)
+        job.outputURL = self.destURL
+        job.outputFileName = fileName;
 
         return job
     }

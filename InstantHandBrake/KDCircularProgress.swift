@@ -36,11 +36,11 @@ public class KDCircularProgress: NSView, CAAnimationDelegate {
     
     private struct ConversionFunctions {
         static func DegreesToRadians (_ value:CGFloat) -> CGFloat {
-            return value * CGFloat(M_PI) / 180.0
+            return value * CGFloat.pi / 180.0
         }
         
         static func RadiansToDegrees (_ value:CGFloat) -> CGFloat {
-            return value * 180.0 / CGFloat(M_PI)
+            return value * 180.0 / CGFloat.pi
         }
     }
     
@@ -397,7 +397,7 @@ public class KDCircularProgress: NSView, CAAnimationDelegate {
             let trackLineWidth: CGFloat = radius * trackThickness
             let progressLineWidth = radius * progressThickness
             let arcRadius = max(radius - trackLineWidth/2, radius - progressLineWidth/2)
-            ctx.addArc(center: center, radius: arcRadius, startAngle: 0, endAngle: CGFloat(M_PI * 2), clockwise: false)
+            ctx.addArc(center: center, radius: arcRadius, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: false)
             trackColor.set()
             ctx.setStrokeColor(trackColor.cgColor)
             ctx.setFillColor(progressInsideFillColor.cgColor)
@@ -473,7 +473,7 @@ public class KDCircularProgress: NSView, CAAnimationDelegate {
             }
             
             let halfX = bounds.size.width/2.0
-            let floatPi = CGFloat(M_PI)
+            let floatPi = CGFloat.pi
             let rotateSpeed = clockwise == true ? gradientRotateSpeed : gradientRotateSpeed * -1
             let angleInRadians = ConversionFunctions.DegreesToRadians(rotateSpeed! * CGFloat(angle) - 90)
             let oppositeAngle = angleInRadians > floatPi ? angleInRadians - floatPi : angleInRadians + floatPi
