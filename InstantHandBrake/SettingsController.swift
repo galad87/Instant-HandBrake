@@ -29,8 +29,8 @@ class SettingsController: NSViewController, Toolbared {
     // MARK: - Titles
 
     class TitleItem : NSObject {
-        let title: HBTitle
-        var enabled: Bool
+        @objc let title: HBTitle
+        @objc var enabled: Bool
 
         init(title: HBTitle, enabled: Bool = true) {
             self.title = title
@@ -38,7 +38,7 @@ class SettingsController: NSViewController, Toolbared {
         }
     }
 
-    private dynamic var items = [TitleItem]()
+    @objc private dynamic var items = [TitleItem]()
     private var destURL = URL(fileURLWithPath: "/")
 
     // MARK: - UI
@@ -92,8 +92,8 @@ class SettingsController: NSViewController, Toolbared {
         panel.canCreateDirectories = true
         panel.prompt = "Choose"
 
-        func modalCompletionHandler(_ modalResponse: NSModalResponse) {
-            if let URL = panel.url, modalResponse == NSFileHandlingPanelOKButton {
+        func modalCompletionHandler(_ modalResponse: NSApplication.ModalResponse) {
+            if let URL = panel.url, modalResponse == NSApplication.ModalResponse.OK {
                 let item = self.prepareDestinationPopUpItem(URL)
 
                 self.destinationPopUp.menu?.removeItem(at: 0)
@@ -120,7 +120,7 @@ class SettingsController: NSViewController, Toolbared {
         let item = NSMenuItem(title: destURL.lastPathComponent, action: sel, keyEquivalent: "")
         item.target = self
 
-        let icon = NSWorkspace.shared().icon(forFile: destURL.path)
+        let icon = NSWorkspace.shared.icon(forFile: destURL.path)
         icon.size = NSSize(width: 16, height: 16)
         item.image = icon
 

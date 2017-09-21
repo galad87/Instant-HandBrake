@@ -82,7 +82,7 @@ class EncodeController: NSViewController, Toolbared {
             return nil
         }
 
-        let workspace = NSWorkspace.shared()
+        let workspace = NSWorkspace.shared
         workspace.activateFileViewerSelecting(urls)
     }
 
@@ -94,8 +94,8 @@ class EncodeController: NSViewController, Toolbared {
         alert.addButton(withTitle: "Stop Encoding")
         alert.alertStyle = .critical
 
-        alert.beginSheetModal(for: self.view.window!) { (response: NSModalResponse) in
-            if response == NSAlertSecondButtonReturn {
+        alert.beginSheetModal(for: self.view.window!) { (response: NSApplication.ModalResponse) in
+            if response == NSApplication.ModalResponse.alertSecondButtonReturn {
                 self.jobs.removeAll()
                 self.remainingJobs.removeAll()
                 self.core.cancelEncode()

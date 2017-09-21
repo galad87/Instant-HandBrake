@@ -22,8 +22,8 @@ class DocumentController: NSWindowController, NSWindowDelegate, DocumentViewCont
 
     @IBOutlet weak var leftItem: NSToolbarItem!
 
-    override var windowNibName : String! {
-        return "DocumentController"
+    override var windowNibName : NSNib.Name? {
+        return NSNib.Name(rawValue: "DocumentController")
     }
 
     init(fileURL: URL, presetsManager: HBPresetsManager, delegate: DocumentDelegate) {

@@ -122,7 +122,7 @@ public class KDCircularProgress: NSView, CAAnimationDelegate {
         }
     }
     
-    @IBInspectable public var glowMode: KDCircularProgressGlowMode = .forward {
+    public var glowMode: KDCircularProgressGlowMode = .forward {
         didSet {
             progressLayer.glowMode = glowMode
         }
@@ -389,7 +389,7 @@ public class KDCircularProgress: NSView, CAAnimationDelegate {
         override func draw(in ctx: CGContext) {
             NSGraphicsContext.saveGraphicsState()
             let nsgc = NSGraphicsContext(cgContext: ctx, flipped: true)
-            NSGraphicsContext.setCurrent(nsgc)
+            NSGraphicsContext.current = nsgc
             let rect = bounds
             let size = rect.size
             let center = CGPoint(x: CGFloat(size.width/2.0), y: CGFloat(size.height/2.0))
@@ -407,7 +407,7 @@ public class KDCircularProgress: NSView, CAAnimationDelegate {
 
             let image = NSImage(size: size)
             image.lockFocus()
-            let imageCtx = NSGraphicsContext.current()?.cgContext
+            let imageCtx = NSGraphicsContext.current?.cgContext
             let reducedAngle = UtilityFunctions.Mod(angle, range: 360, minMax: (0, 360))
             let fromAngle = ConversionFunctions.DegreesToRadians(CGFloat(-startAngle))
             let toAngle = ConversionFunctions.DegreesToRadians(CGFloat((clockwise == true ? -reducedAngle : reducedAngle) - startAngle))

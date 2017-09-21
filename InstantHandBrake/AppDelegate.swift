@@ -75,7 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, DocumentDelegate {
         documentControllers.append(documentController)
         documentController.showWindow(self)
 
-        NSDocumentController.shared().noteNewRecentDocumentURL(fileURL)
+        NSDocumentController.shared.noteNewRecentDocumentURL(fileURL)
     }
 
     func documentDidClose(_ document: DocumentController) {
@@ -87,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, DocumentDelegate {
         panel.canChooseDirectories = true
 
         panel.begin { result in
-            if result == NSFileHandlingPanelOKButton {
+            if result == NSApplication.ModalResponse.OK {
                 if let url = panel.url {
                     self.addDocumentController(url)
                 }

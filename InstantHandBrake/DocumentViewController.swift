@@ -60,7 +60,7 @@ class DocumentViewController: NSViewController, SettingsControllerDelegate, Scan
 
     override func addChildViewController(_ childViewController: NSViewController) {
         childViewController.view.frame = self.view.bounds
-        childViewController.view.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
+        childViewController.view.autoresizingMask = [NSView.AutoresizingMask.width, NSView.AutoresizingMask.height]
 
         super.addChildViewController(childViewController)
     }
@@ -70,7 +70,7 @@ class DocumentViewController: NSViewController, SettingsControllerDelegate, Scan
 
         CATransaction.begin()
         delegate?.setLeftToolbarView(toViewController.leftToolbarItem)
-        transition(from: fromViewController, to: toViewController, options: .slideForward, completionHandler: nil)
+        transition(from: fromViewController, to: toViewController, options: NSViewController.TransitionOptions.slideForward, completionHandler: nil)
         CATransaction.commit()
     }
 
