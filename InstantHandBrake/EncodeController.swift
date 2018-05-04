@@ -75,7 +75,7 @@ class EncodeController: NSViewController, Toolbared {
     }
 
     @IBAction func showInFinder(_ sender: AnyObject) {
-        let urls = jobs.flatMap{ job -> URL? in
+        let urls = jobs.compactMap{ job -> URL? in
             if let url = job.outputURL, let name = job.outputFileName {
                 return url.appendingPathComponent(name)
             }
@@ -134,7 +134,7 @@ class EncodeController: NSViewController, Toolbared {
             switch result {
             case .done:
                 etaLabel.stringValue = NSLocalizedString("Completed", comment: "Encode -> Completed")
-            case .cancelled:
+            case .canceled:
                 etaLabel.stringValue = NSLocalizedString("Cancelled", comment: "Encode -> Cancelled")
             case .failed:
                 etaLabel.stringValue = NSLocalizedString("Failed", comment: "Encode -> Failed")

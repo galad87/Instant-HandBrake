@@ -188,7 +188,7 @@ class SettingsController: NSViewController, Toolbared {
     }
 
     private func buildAudioPopUp() {
-        let languages = Set(items.flatMap{ $0.title.audioTracks.flatMap{ $0[keyAudioTrackLanguageIsoCode] as? String } })
+        let languages = Set(items.flatMap { $0.title.audioTracks.compactMap { $0[keyAudioTrackLanguageIsoCode] as? String } })
         buildLanguagesMenu(audioPopUp.menu!, languages: languages)
     }
 
@@ -199,7 +199,7 @@ class SettingsController: NSViewController, Toolbared {
     }
 
     private func buildSubtitlesPopUp() {
-        let languages = Set(items.flatMap{ $0.title.subtitlesTracks.flatMap{ $0["keySubTrackLanguageIsoCode"] as? String } })
+        let languages = Set(items.flatMap { $0.title.subtitlesTracks.compactMap { $0["keySubTrackLanguageIsoCode"] as? String } })
         buildLanguagesMenu(subtitlesPopUp.menu!, languages: languages)
     }
 
@@ -214,8 +214,8 @@ class SettingsController: NSViewController, Toolbared {
     func prepareJob(_ title: HBTitle) -> HBJob {
         let p = self.preset.mutableCopy() as! HBMutablePreset
 
-        let audioLanguages = Set(title.audioTracks.flatMap{ $0[keyAudioTrackLanguageIsoCode] as? String })
-        let subLanguages = Set(title.subtitlesTracks.flatMap{ $0["keySubTrackLanguageIsoCode"] as? String })
+        let audioLanguages = Set(title.audioTracks.compactMap{ $0[keyAudioTrackLanguageIsoCode] as? String })
+        let subLanguages = Set(title.subtitlesTracks.compactMap { $0["keySubTrackLanguageIsoCode"] as? String })
 
         if audioLanguages.contains(preferredAudioLang) {
             p.setObject(preferredAudioLang, forKey: "AudioLanguageList")
