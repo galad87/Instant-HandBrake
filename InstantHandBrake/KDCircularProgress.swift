@@ -71,7 +71,7 @@ public class KDCircularProgress: NSView, CAAnimationDelegate {
     
     private var progressLayer: KDCircularProgressViewLayer! {
         get {
-            return layer as! KDCircularProgressViewLayer
+            return layer as? KDCircularProgressViewLayer
         }
     }
     

@@ -15,7 +15,7 @@ class ActivityLogWindowController: NSWindowController {
     @IBOutlet var textView: NSTextView!
 
     override var windowNibName : NSNib.Name? {
-        return NSNib.Name(rawValue: "ActivityLogWindowController")
+        return "ActivityLogWindowController"
     }
 
     override func windowDidLoad() {

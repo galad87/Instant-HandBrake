@@ -51,22 +51,22 @@ class DocumentViewController: NSViewController, SettingsControllerDelegate, Scan
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addChildViewController(scanController)
+        addChild(scanController)
         view.addSubview(scanController.view)
         delegate?.setLeftToolbarView(scanController.leftToolbarItem)
 
         scanController.scan(fileURL)
     }
 
-    override func addChildViewController(_ childViewController: NSViewController) {
+    override func addChild(_ childViewController: NSViewController) {
         childViewController.view.frame = self.view.bounds
         childViewController.view.autoresizingMask = [NSView.AutoresizingMask.width, NSView.AutoresizingMask.height]
 
-        super.addChildViewController(childViewController)
+        super.addChild(childViewController)
     }
 
     private func transitionFromViewController<T: NSViewController>(_ fromViewController: NSViewController, toViewController: T) where T:Toolbared {
-        addChildViewController(toViewController)
+        addChild(toViewController)
 
         CATransaction.begin()
         delegate?.setLeftToolbarView(toViewController.leftToolbarItem)
