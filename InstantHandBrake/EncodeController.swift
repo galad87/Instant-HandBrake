@@ -56,7 +56,7 @@ class EncodeController: NSViewController, Toolbared {
 
     private func encodeNextJob() -> Bool {
         if let job = remainingJobs.first {
-            remainingJobs.remove(at: remainingJobs.index(of: job)!)
+            remainingJobs.remove(at: remainingJobs.firstIndex(of: job)!)
 
             core.encode(job, progressHandler: handleProgress,
                            completionHandler: handleCompletion)
@@ -138,6 +138,8 @@ class EncodeController: NSViewController, Toolbared {
                 etaLabel.stringValue = NSLocalizedString("Cancelled", comment: "Encode -> Cancelled")
             case .failed:
                 etaLabel.stringValue = NSLocalizedString("Failed", comment: "Encode -> Failed")
+            @unknown default:
+                break;
             }
 
             pauseButton.isEnabled = false

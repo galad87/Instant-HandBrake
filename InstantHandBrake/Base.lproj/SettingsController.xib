@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14087.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14087.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SettingsController" customModule="InstantHandBrake" customModuleProvider="target">
@@ -47,7 +45,7 @@
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                 <tableColumns>
-                                                    <tableColumn identifier="" width="21" minWidth="21" maxWidth="21" id="33S-tG-B9o">
+                                                    <tableColumn width="21" minWidth="21" maxWidth="21" id="33S-tG-B9o">
                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -77,12 +75,13 @@
                                                                 </subviews>
                                                                 <constraints>
                                                                     <constraint firstItem="BlX-Ru-BUW" firstAttribute="top" secondItem="9Cu-Zg-3SX" secondAttribute="top" constant="1" id="TqP-P8-3HU"/>
+                                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BlX-Ru-BUW" secondAttribute="trailing" id="frz-SC-Tlh"/>
                                                                     <constraint firstItem="BlX-Ru-BUW" firstAttribute="leading" secondItem="9Cu-Zg-3SX" secondAttribute="leading" constant="3" id="oo5-LA-0cY"/>
                                                                 </constraints>
                                                             </tableCellView>
                                                         </prototypeCellViews>
                                                     </tableColumn>
-                                                    <tableColumn identifier="" width="353" minWidth="40" maxWidth="3000" id="326-jT-SBW">
+                                                    <tableColumn width="353" minWidth="40" maxWidth="3000" id="326-jT-SBW">
                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -122,7 +121,7 @@
                                                             </tableCellView>
                                                         </prototypeCellViews>
                                                     </tableColumn>
-                                                    <tableColumn identifier="" width="87" minWidth="87" maxWidth="87" id="FhY-pf-bHp">
+                                                    <tableColumn width="87" minWidth="87" maxWidth="87" id="FhY-pf-bHp">
                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Duration">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -169,11 +168,11 @@
                                             </tableView>
                                         </subviews>
                                     </clipView>
-                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="fU5-gP-FNx">
+                                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="fU5-gP-FNx">
                                         <rect key="frame" x="1" y="97" width="379" height="16"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
-                                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="bc1-Ci-WUb">
+                                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="bc1-Ci-WUb">
                                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
@@ -183,10 +182,10 @@
                                     </tableHeaderView>
                                 </scrollView>
                                 <stackView distribution="equalCentering" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dM-hB-h6u">
-                                    <rect key="frame" x="26" y="0.0" width="419" height="132"/>
+                                    <rect key="frame" x="26" y="0.0" width="420" height="132"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O9c-b8-x4A">
-                                            <rect key="frame" x="15" y="99" width="389" height="21"/>
+                                            <rect key="frame" x="16" y="99" width="389" height="21"/>
                                             <subviews>
                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YDH-I5-Lpf">
                                                     <rect key="frame" x="-2" y="2" width="185" height="17"/>
@@ -197,7 +196,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gIA-74-mOl">
-                                                    <rect key="frame" x="187" y="-3" width="205" height="26"/>
+                                                    <rect key="frame" x="187" y="-3" width="205" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="Ccq-Cg-XeS"/>
                                                     </constraints>
@@ -232,7 +231,7 @@
                                             </customSpacing>
                                         </stackView>
                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b9q-lq-ZeW">
-                                            <rect key="frame" x="15" y="70" width="389" height="21"/>
+                                            <rect key="frame" x="16" y="70" width="389" height="21"/>
                                             <subviews>
                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eSI-ac-4gT">
                                                     <rect key="frame" x="-2" y="2" width="185" height="17"/>
@@ -243,7 +242,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UGo-aN-fGr">
-                                                    <rect key="frame" x="187" y="-3" width="205" height="26"/>
+                                                    <rect key="frame" x="187" y="-3" width="205" height="25"/>
                                                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" id="xRF-mn-i3b">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="menu"/>
@@ -261,7 +260,7 @@
                                             </customSpacing>
                                         </stackView>
                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EPd-31-y3s">
-                                            <rect key="frame" x="15" y="41" width="389" height="21"/>
+                                            <rect key="frame" x="16" y="41" width="389" height="21"/>
                                             <subviews>
                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9MK-Zl-Jeq">
                                                     <rect key="frame" x="-2" y="2" width="185" height="17"/>
@@ -272,7 +271,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Khd-ht-lv8">
-                                                    <rect key="frame" x="187" y="-3" width="205" height="26"/>
+                                                    <rect key="frame" x="187" y="-3" width="205" height="25"/>
                                                     <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="UbI-2J-7Hd" id="dX1-t1-90A">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="menu"/>
@@ -300,7 +299,7 @@
                                             </customSpacing>
                                         </stackView>
                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SRp-1X-mRg">
-                                            <rect key="frame" x="15" y="12" width="389" height="21"/>
+                                            <rect key="frame" x="16" y="12" width="389" height="21"/>
                                             <subviews>
                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qiK-6w-AVk">
                                                     <rect key="frame" x="-2" y="2" width="185" height="17"/>
@@ -311,7 +310,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WAc-NB-6ai">
-                                                    <rect key="frame" x="187" y="-3" width="205" height="26"/>
+                                                    <rect key="frame" x="187" y="-3" width="205" height="25"/>
                                                     <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Twd-Be-ojD" id="qa0-BT-OOL">
                                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="menu"/>
@@ -397,7 +396,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button toolTip="Start encoding" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6i6-EC-MDm">
-                    <rect key="frame" x="86" y="3" width="32" height="25"/>
+                    <rect key="frame" x="85.5" y="7" width="33" height="23"/>
                     <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="playBackTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" id="KOk-GZ-Dx7">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -408,7 +407,7 @@
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="6i6-EC-MDm" firstAttribute="centerY" secondItem="Ye8-IR-fX9" secondAttribute="centerY" id="YeZ-rK-KAB"/>
+                <constraint firstItem="6i6-EC-MDm" firstAttribute="top" secondItem="Ye8-IR-fX9" secondAttribute="top" constant="2" id="Azm-dY-Mqo"/>
                 <constraint firstItem="6i6-EC-MDm" firstAttribute="leading" secondItem="Ye8-IR-fX9" secondAttribute="leading" constant="86" id="bZL-hy-sFU"/>
                 <constraint firstAttribute="trailing" secondItem="6i6-EC-MDm" secondAttribute="trailing" constant="2" id="zQs-PS-4Zb"/>
             </constraints>

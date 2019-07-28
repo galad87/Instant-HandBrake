@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14087.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14087.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ScanController" customModule="InstantHandBrake" customModuleProvider="target">
@@ -59,7 +58,7 @@
                             <integer key="value" value="90"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="IBColor1">
-                            <color key="value" red="0.1209942505" green="0.56499216080000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="value" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="startAngle">
                             <integer key="value" value="-90"/>
@@ -99,7 +98,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button toolTip="Stop encoding" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dof-oY-47i">
-                    <rect key="frame" x="86" y="3" width="32" height="25"/>
+                    <rect key="frame" x="85.5" y="7" width="33" height="23"/>
                     <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="stopTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" id="8Tx-8C-Kbk">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -111,7 +110,7 @@
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Dof-oY-47i" secondAttribute="trailing" constant="2" id="ZtB-cZ-awf"/>
-                <constraint firstItem="Dof-oY-47i" firstAttribute="centerY" secondItem="3Ut-BS-oxJ" secondAttribute="centerY" id="mxz-6o-82H"/>
+                <constraint firstItem="Dof-oY-47i" firstAttribute="top" secondItem="3Ut-BS-oxJ" secondAttribute="top" constant="2" id="rFd-ks-3WU"/>
                 <constraint firstItem="Dof-oY-47i" firstAttribute="leading" secondItem="3Ut-BS-oxJ" secondAttribute="leading" constant="86" id="szP-za-Ebk"/>
             </constraints>
             <point key="canvasLocation" x="496" y="86"/>
