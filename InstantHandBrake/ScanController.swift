@@ -39,7 +39,7 @@ class ScanController: NSViewController, Toolbared {
     }
 
     func scan(_ fileURL: URL) {
-        self.core.scanURL(fileURL, titleIndex: 0, previews: 10, minDuration: 10,
+        self.core.scanURL(fileURL, titleIndex: 0, previews: 10, minDuration: 10, keepPreviews: false,
                           progressHandler: handleProgress,
                           completionHandler: handleCompletion)
 
